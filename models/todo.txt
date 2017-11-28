@@ -1,0 +1,16 @@
+Main components:
+    User
+    Pickup Request
+    Form for creating a pickup
+    New user Sign up Form
+    Automated call or text system
+    View and edit User Profile
+
+Questions: 
+When a person finds a animal in need of pickup foes the wildlife center call the transporters
+to find someone willing to pickup the animal or is the finder giving numbers to call?
+
+Transporter signup:
+https://www.wildlifecenter.org/transport-and-rescue-volunteer-application
+
+link the app with our spreadsheet so that we don’t have to keep track of two things?
