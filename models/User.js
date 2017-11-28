@@ -1,27 +1,44 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Address = require('./Address');
+const bcrypt = require('bcrypt-nodejs');
 
 const UserSchema = new Schema({
-    firstName: { type: String, required: true, trim: true },
-    lastName: { type: String, required: true, trim: true },
-    address: Address,
-    email: { type: String, required: true, trim: true },
-    password: { type: String, required: true, trim: true },
-    preferredContact: { type: String, required: true },
-    completedPickups: { type: Number }
+  name: { type: String, required: true, trim: true },
+  email: { type: String, required: true, trim: true, unique: true },
+  password: { type: String, required: true },
+  admin: { type: Boolean, required: true, default: false },
+  transporter: { type: Boolean, required: true, default: false },
+  transporterId: { type: Schema.Types.ObjectId },
+  notify: { type: Boolean, default: true }
+});
+
+
+//encrypting user password before saving to DB
+User.pre('save', (next) => {
+  const user = this;
+  
+  //put some salt on it
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) return next(err);
+    
+    //hash the user password
+    bcrypt.hash(user.password, salt, null, (err, hash) => {
+      if (err) return next(err);
+      
+      //save the hash to the user's password.
+      user.password = hash;
+      next();
+    });
+  });
 });
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;
 
-//First and Last Name
-//Email + Password
-//Phone Number
-//Address
-//Preferred Contact Method
-//Preferred Contact Hours
-//Pickup Range
-//Completed pickups
-//Notifications on or off
-//Willingness to capture or rescue
+//name
+//email
+//password
+//admin yes/no
+//transporter yes/no
+//transporter id
+//notify yes/no

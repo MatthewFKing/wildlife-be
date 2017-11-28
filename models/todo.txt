@@ -14,3 +14,29 @@ Transporter signup:
 https://www.wildlifecenter.org/transport-and-rescue-volunteer-application
 
 link the app with our spreadsheet so that we don’t have to keep track of two things?
+
+
+New idea:
+
+First create a web app that is used only by the Wildlife Center staff that automates the calls and 
+priority of the transporter being called.
+
+Transporters do not need email/password at first it should be a just a list of contacts,
+if the transporters want to sign up for the account at a later date then they could just use a
+"already a volenteer" link that would convert the transporter entry to a User. User Schema
+could include a tag that identifies the user as a transporter or not. 
+
+This would help solve the problem where we have existing transporters that do not know about
+the app or would prefer not to use it. If the customer has the app they would be able to 
+get notifications via the App, text, email or however else they want them. Otherwise it would
+just default to an automated call.
+
+Admin dashboard would have the options to edit/remove/add users and create new pickup requests
+and resolve completed pickups. Transporter dashboard would have list of active pickups sorted 
+by in their range and outside their range. Also have options to edit their profile/preferences.
+And keep a log of pickups they have completed and the information associated with 
+it (miles, time, rescue?, desc).
+
+Finder calls the wildlife center, front desk issues a new pickup and instructs the finder to 
+call back when a transporter has been found, selects the name of the transport from a list and
+adds that to the request and marks it as resolved. 
