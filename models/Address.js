@@ -16,3 +16,5 @@ module.exports = Address;
 //State
 //Zip
 //Coordinates?
+
+//Erin's first comment!
