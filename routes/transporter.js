@@ -22,6 +22,14 @@ router.post('/', (req, res, next) => {
   });
 });
 
+router.post('/bulk', (req, res, next) => {
+  const bulkTransporters = req.body;
+  Transporter.insertMany(bulkTransporters, (err, transporters) => {
+    if (err) return next(err);
+    res.json(transporters);
+  });
+});
+
 //Update existing transporter
 router.put('/', (req, res, next) => {
   Transporter.findById(req.body.id, (err, transporter) => {

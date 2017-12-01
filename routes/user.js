@@ -31,6 +31,14 @@ router.post('/', (req, res, next) => {
   });
 });
 
+router.post('/bulk', (req, res, next) => {
+  const bulkUsers = req.body;
+  User.insertMany(bulkUsers, (err, users) => {
+    if (err) return next(err);
+    res.json(users);
+  });
+});
+
 //Update an existing user
 router.put('/', (req, res, next) => {
   User.findById(req.body.id).update(req.body, (err, updatedUser) => {
