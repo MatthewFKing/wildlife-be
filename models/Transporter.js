@@ -5,7 +5,7 @@ const Address = require('./Address');
 const TransporterSchema = new Schema({
     firstName: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },
-    address: Address,
+    address: { type: mongoose.Schema.ObjectId, ref: 'Address' },
     email: { type: String, required: true, trim: true },
     preferredContact: { type: String, required: true },
     completedPickups: { type: Number },

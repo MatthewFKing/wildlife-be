@@ -14,17 +14,18 @@ const UserSchema = new Schema({
 
 
 //encrypting user password before saving to DB
-User.pre('save', (next) => {
+UserSchema.pre('save', function (next) {
   const user = this;
-  
+
+  if(!user.isModified('password')) return next();
   //put some salt on it
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return next(err);
-    
+
     //hash the user password
     bcrypt.hash(user.password, salt, null, (err, hash) => {
       if (err) return next(err);
-      
+
       //save the hash to the user's password.
       user.password = hash;
       next();

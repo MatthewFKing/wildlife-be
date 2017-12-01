@@ -7,8 +7,8 @@ const PickupSchema = new Schema({
   contactName: { type: String, required: true },
   contactPhone: { type: String, required: true },
   animalDescription: {type: String, required: true },
-  currentLocation: Address,
-  destination: Address,
+  currentLocation: { type: mongoose.Schema.ObjectId, ref: 'Address' },
+  destination: { type: mongoose.Schema.ObjectId, ref: 'Address' },
   rescue: { type: Boolean, required: true },
   additionalNote: { type: String }
 });
